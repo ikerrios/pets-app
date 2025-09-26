@@ -10,14 +10,27 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/pet")
+/**
+ * En este controlador se exponen todos los endpoint referentes a Pets {@link Pet}
+ * @version 1.0
+ * @author Cipriano García
+ */
 public class PetControlller {
 
     private PetRepository petRepository;
 
+    /**
+     * Constructor del controlador
+     * @param petRepository Repositorio para consultar en BD.
+     */
     public PetControlller(PetRepository petRepository) {
         this.petRepository = petRepository;
     }
 
+    /**
+     * Este metodo devuelven el listado de pets
+     * @return List<Pet> información de cada mascota
+     */
     @GetMapping("/list")
     public List<Pet> hello(){
         return petRepository.findAll();
