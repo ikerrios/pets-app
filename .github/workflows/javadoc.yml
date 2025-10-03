@@ -1,30 +1,33 @@
-name: Build and Deploy Javadoc
+name: Deploy to GitHub Pages
 
 on:
   push:
     branches:
-      - main  # Se ejecuta en cada push a main
+      - main  # Cambia si tu rama principal no es main
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repo
+      # 1️⃣ Clonar el repositorio
+      - name: Checkout repository
         uses: actions/checkout@v3
 
+      # 2️⃣ Configurar Java 21
       - name: Setup Java
         uses: actions/setup-java@v3
         with:
-          distribution: temurin
+          distribution: 'temurin'
           java-version: '21'
 
-      - name: Build Javadoc
-        run: mvn javadoc:javadoc
+      # 3️⃣ Construir el proyecto y generar /docs
+      - name: Build project
+        run: mvn clean package  # o el comando que genere tu documentación en /docs
 
+      # 4️⃣ Desplegar /docs a GitHub Pages
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v6
+        uses: peaceiris/actions-gh-pages@v5
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./target/site/apidocs
-          destination_dir: docs
+          publish_dir: ./docs
+          # force_orphan: true  # Opcional: reemplaza todo el contenido del branch gh-pages
