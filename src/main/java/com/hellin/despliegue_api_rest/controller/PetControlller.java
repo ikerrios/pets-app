@@ -20,7 +20,7 @@ public class PetControlller {
     private PetRepository petRepository;
 
     /**
-     * Constructor del controlador
+     * Constructor del controlador rest
      * @param petRepository Repositorio para consultar en BD.
      */
     public PetControlller(PetRepository petRepository) {
