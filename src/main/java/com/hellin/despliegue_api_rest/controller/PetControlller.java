@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * En este controlador se exponen todos los endpoint referentes a Pets {@link Pet}
  * @version 1.0
- * @author Cipriano García
+ * @author Cipriano García Herz
  */
 public class PetControlller {
 
