@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main  # Cambia si tu rama principal no es main
+      - main  # Se ejecuta solo al hacer push en main
 
 jobs:
   deploy:
@@ -22,12 +22,12 @@ jobs:
 
       # 3️⃣ Construir el proyecto y generar /docs
       - name: Build project
-        run: mvn clean package  # o el comando que genere tu documentación en /docs
+        run: mvn clean package  # Ajusta si generas docs en otra carpeta
 
       # 4️⃣ Desplegar /docs a GitHub Pages
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v5
+        uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./docs
-          # force_orphan: true  # Opcional: reemplaza todo el contenido del branch gh-pages
+          force_orphan: true  # Reemplaza todo el contenido del branch gh-pages
