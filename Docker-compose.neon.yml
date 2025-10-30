@@ -1,0 +1,18 @@
+version: "3.9"
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: backend-neon
+    ports:
+      - "8081:8080"
+    environment:
+      SPRING_DATASOURCE_URL: "jdbc:postgresql://ep-fancy-glitter-ad69o7yt-pooler.c-2.us-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require"
+      SPRING_DATASOURCE_USERNAME: "neondb_owner"
+      SPRING_DATASOURCE_PASSWORD: "npg_6cLfNzhHBr7C"
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      SPRING_PROFILES_ACTIVE: neon
+    depends_on: []
+    restart: always
