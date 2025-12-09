@@ -1,8 +1,8 @@
 services:
   api:
-    build: .
-    container_name: api
-    restart: always
+    build: . #coge todo lo de la raíz
+    container_name: api #nombre contenedor.
+    restart: always #reiniciar el servicio siempre.
     environment:
       SPRING_PROFILES_ACTIVE: local
     ports:
@@ -15,10 +15,10 @@ services:
       MYSQL_ROOT_PASSWORD: root
     restart: always
     volumes:
-      - ./sql/mysql:/docker-entrypoint-initdb.d
-      - db_data:/var/lib/mysql
+      - ./sql/mysql:/docker-entrypoint-initdb.d #Coge el archivo SQL de la ruta en la que se encuentre.
+      - db_data:/var/lib/mysql #Mantiene los datos.
     ports:
       - "3307:3306"
 
 volumes:
-  db_data:
+  db_data: #Variable para instanciar el volumen.

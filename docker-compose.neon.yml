@@ -1,7 +1,7 @@
 services:
   api:
     build: .
-    container_name: pets-api
+    container_name: stranger-api
     environment:
       SPRING_PROFILES_ACTIVE: neon
     ports:
